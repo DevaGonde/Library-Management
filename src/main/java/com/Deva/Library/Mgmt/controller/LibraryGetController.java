@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/Fetch")
@@ -45,5 +46,10 @@ public class LibraryGetController {
     @GetMapping("/Search/name/{name}")
     public ResponseEntity<List<Library>> getByName(@PathVariable String name){
         return  new ResponseEntity<List<Library>>(service.getByName(name),HttpStatus.FOUND);
+    }
+
+    @GetMapping("/Fetch/cateory")
+    public ResponseEntity<Set<String>> getAllCategories(){
+        return new ResponseEntity<Set<String>>(service.getCategories(),HttpStatus.FOUND);
     }
 }
