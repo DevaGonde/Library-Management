@@ -13,8 +13,10 @@ public class Library {
 
     private String title;
     private String author;
+    private String author_img;
     private String description;
     private String img;
     private String type;
+    private String type_img;
 
 }

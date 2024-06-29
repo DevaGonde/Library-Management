@@ -6,9 +6,7 @@ import com.Deva.Library.Mgmt.repository.LibrarySearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class LibraryService {
@@ -48,12 +46,21 @@ public class LibraryService {
     }
 
 
-    public Set<String> getCategories() {
-        Set<String> set=new HashSet<>();
+    public Map<String,String> getAllAuthors() {
+        Map<String,String> map=new HashMap<>();
         List<Library>li=repo.findAll();
         li.forEach((library)->{
-            set.add(library.getType());
+            map.put(library.getAuthor(), library.getAuthor_img());
         });
-        return set;
+        return map;
+    }
+
+    public Map<String,String> getCategoryiesData(){
+        Map<String,String> map=new HashMap<>();
+        List<Library>li=repo.findAll();
+        li.forEach((library)->{
+            map.put(library.getType(), library.getType_img());
+        });
+        return map;
     }
 }

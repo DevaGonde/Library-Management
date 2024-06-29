@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.convert.MongoConverter;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 
 @Component
@@ -23,14 +21,15 @@ public class LibrarySearchImplementation implements LibrarySearch {
 
     @Autowired
     private MongoConverter converter;
-    MongoDatabase database = client.getDatabase("DevaGonde");
-    MongoCollection<Document> collection = database.getCollection("Library");
+
 
     @Override
     public List<Library> getBySearch(String text) {
 
         List<Library> libraries=new ArrayList<>();
 
+        MongoDatabase database = client.getDatabase("DevaGonde");
+        MongoCollection<Document> collection = database.getCollection("Library");
         AggregateIterable<Document> result = collection.aggregate(Arrays.asList(new Document("$search",
                 new Document("index", "LibraryIndex")
                 .append("text",
@@ -46,6 +45,9 @@ public class LibrarySearchImplementation implements LibrarySearch {
     public List<Library> getByAuthor(String author) {
 
         List<Library> libraries=new ArrayList<>();
+
+        MongoDatabase database = client.getDatabase("DevaGonde");
+        MongoCollection<Document> collection = database.getCollection("Library");
 
         AggregateIterable<Document> result = collection.aggregate(Arrays.asList(new Document("$search",
                 new Document("index", "LibraryIndex")
@@ -64,6 +66,8 @@ public class LibrarySearchImplementation implements LibrarySearch {
 
         List<Library> libraries=new ArrayList<>();
 
+        MongoDatabase database = client.getDatabase("DevaGonde");
+        MongoCollection<Document> collection = database.getCollection("Library");
         AggregateIterable<Document> result = collection.aggregate(Arrays.asList(new Document("$search",
                 new Document("index", "LibraryIndex")
                         .append("text",
@@ -80,6 +84,8 @@ public class LibrarySearchImplementation implements LibrarySearch {
 
         List<Library> libraries=new ArrayList<>();
 
+        MongoDatabase database = client.getDatabase("DevaGonde");
+        MongoCollection<Document> collection = database.getCollection("Library");
         AggregateIterable<Document> result = collection.aggregate(Arrays.asList(new Document("$search",
                 new Document("index", "LibraryIndex")
                         .append("text",

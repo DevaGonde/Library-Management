@@ -4,6 +4,7 @@ import com.Deva.Library.Mgmt.model.Library;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Set;
 
 @Component
 public interface LibrarySearch {
@@ -14,4 +15,5 @@ public interface LibrarySearch {
     List<Library> getByBookName(String author);
 
     List<Library> getByType(String type);
+
 }
