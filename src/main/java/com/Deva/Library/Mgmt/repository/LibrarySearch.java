@@ -16,4 +16,7 @@ public interface LibrarySearch {
 
     List<Library> getByType(String type);
 
+    List<Library> getLimitedBooks();
+
+    Library getBook(String title, String author);
 }

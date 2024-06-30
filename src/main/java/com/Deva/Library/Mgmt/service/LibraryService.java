@@ -63,4 +63,12 @@ public class LibraryService {
         });
         return map;
     }
+
+    public List<Library> getLimitedBooks() {
+        return srepo.getLimitedBooks();
+    }
+
+    public Library getBook(String title, String author) {
+        return srepo.getBook(title,author);
+    }
 }
